@@ -1,0 +1,112 @@
+*{
+    margin: 0;
+    padding: 0;
+    /* font-size: medium; */
+    font-family: sans-serif;
+    color: rgb(90, 89, 89);
+    /* font-weight: 500; */
+}
+
+#headercontainer{
+    width: 100%;
+    height: 120px;
+    border-bottom: 1px solid rgb(160, 157, 157);
+    /* position: fixed; */
+    background-color: white;
+    /* z-index: 7; */
+    
+}
+#head1{
+    width:100% ;
+    height: 70px;
+    border-bottom: 1px solid rgb(160, 157, 157);
+    display: flex;
+    position: relative;
+    justify-content: space-around;
+}
+#head1>div:nth-child(1)>img{
+    margin-left: 10px;
+    width: 150px;
+    margin-top: 10px;
+
+}
+#head1>div:nth-child(2)>input{
+    width: 400px;
+    height: 45px;
+    margin-top: 10px;
+    padding-left: 40px;
+    font-family: "Mier book";
+}
+#searchbar{
+    margin-left: 0px;
+    margin-right: 150px;
+}
+#searchbar>i{
+    position: absolute;
+    left: 260px;
+    top: 30px;
+}
+#searchbar>input{
+    border-radius: 5px;
+    border: 1px solid rgb(160, 157, 157) ;
+    font-family: -apple-system, "Helvetica Neue", sans-serif, "Mier Book";
+}
+#head2{
+    width:100% ;
+    height:50px ;
+}
+
+#nav{
+    /* width: 30%; */
+    display: flex;
+    justify-content: space-around;
+    /* margin-left: 50px; */
+    margin-right: 20px;
+}
+
+#nav>div{
+    width: 150px;
+    margin-top: 10px;
+    height: 50px;
+    padding-top: 10px;
+   padding-left: 5px;
+   
+}
+#nav>div:nth-child(2){
+    border-left: 1px solid rgb(160, 157, 157);
+    border-right: 1px solid rgb(160, 157, 157);
+}
+#nav>div:nth-child(3){
+   justify-content: space-around;
+   margin-bottom: 10px;
+}
+#nav>div:nth-child(3)>div>i{
+   padding-left: 5px;
+}
+#head2{
+    width: 100%;
+    height: 50px;
+    border-bottom: 1px solid grey;
+}
+#head2>ul{
+    justify-content: space-around;
+    align-items: center;
+}
+#head2>ul>li{
+    list-style: none;
+    padding-top: 13px;
+
+   
+}
+#head2>ul>li:hover{
+  border-bottom: 4px solid purple;
+  cursor: pointer;
+  padding-bottom: 10px;
+}
+.flex{
+    display: flex;
+}
+.dropdown-menu{
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    padding: 10px;
+}
