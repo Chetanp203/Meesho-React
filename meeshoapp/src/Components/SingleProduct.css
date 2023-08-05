@@ -66,6 +66,19 @@
 }
 
 .add{
+    width: 130%;
+    height: 50px;
+    /* margin-left: 30px; */
+    background-color: white;
+    color:rgb(168, 27, 140 ) ;
+    border: 1px solid rgb(168, 27, 140 ) ;
+    display: flex;
+    border-radius: 5px;
+    align-items: center;
+    padding-left: 30px;
+    
+}
+.adds{
     width: 49%;
     height: 50px;
     /* margin-left: 30px; */
@@ -76,6 +89,7 @@
     border-radius: 5px;
     align-items: center;
     padding-left: 30px;
+    
 }
 .add i{
     padding-right: 10px;
@@ -111,7 +125,7 @@
 }
 
 
-.right2{
+.right3{
     width: 50%;
     height: 900px;
     /* background-color: yellow; */

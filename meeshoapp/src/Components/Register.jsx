@@ -1,33 +1,82 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import "./Register.css"
+import { AuthContext } from '../MyContext/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
+    const { state, login ,logout} = useContext(AuthContext);
+    console.log(state,"-state")
+    const [userData, setUserData] = useState({name:"", email:"",password:"", role:"Buyer",cart:[]});
+    const router = useNavigate();
+    console.log(userData,"-userdata");
+    const [user, setUser] = useState();
+  
+    useEffect(()=> {
+       if(state?.user){
+        setUser(state?.user)
+       }else{
+        setUser({});
+       }
+    },[state])
+  
+    const handleChange= (event) => {
+       setUserData({...userData, [event.target.name] : event.target.value})
+    }
+    const handleSelectChange= (event) => {
+      const value = event.target.value
+      setUserData({...userData,["role"]:value})
+   }
+  
+  //  role: event.target.value
+  
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        if(userData.name && userData.email && userData.password){
+            const array = JSON.parse(localStorage.getItem("Users")) || [];
+  
+            const userDataObj = {
+                name: userData.name,
+                email: userData.email,
+                password: userData.password,
+                cart:[],
+                role: userData.role,
+            };
+            array.push(userDataObj);
+            localStorage.setItem("Users", JSON.stringify(array));
+            alert("Registration Successfull!!!")
+            setUserData({name:"", email:"",password:""})
+            // router('/login')
+        } else {
+            alert("All fields mandatory")
+        }
+    }
+
     return (
         <div id="body1">
             <div id="login">
                 <img src="https://images.meesho.com/images/marketing/1661417516766.webp" />
                 <p>Sign Up To view your profile</p>
-                <form id="logindetails">
+                <form id="logindetails" onChange={handleSubmit}>
                     <label>Name:</label>
                     <br />
-                    <input type="text" placeholder="Name" />
+                    <input type="text" placeholder="Name" onChange={handleChange} name='name'/>
                     <br />
                     <label>Email:</label>
                     <br />
-                    <input type="text" placeholder="Email" />
+                    <input type="text" placeholder="Email" onChange={handleChange} name='email'/>
                     <br />
                     <label>Select Role:</label>
                     <br />
-                    <select style={{ width: '64%', height: '30px', border: '1px solid grey', marginTop: '5px', borderRadius: '2px' }}>
+                    <select onChange={handleSelectChange} style={{ width: '64%', height: '30px', border: '1px solid grey', marginTop: '5px', borderRadius: '2px' }}>
                         <option value="Buyer">Buyer</option>
                         <option value="Seller">Seller</option>
                     </select>
                     <br />
                     <label>Password:</label>
                     <br />
-                    <input type="password" placeholder="Password" />
+                    <input type="password" placeholder="Password" onChange={handleChange} name='password'/>
                     <br />
-                    <span>Already have an account?<span><b>Login here!!</b></span></span>
+                    <span>Already have an account?<span onClick={()=> router("/login")}><b>Login here!!</b></span></span>
                     <button className='register'>Continue</button>
                 </form>
                 

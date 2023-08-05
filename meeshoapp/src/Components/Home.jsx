@@ -1,33 +1,73 @@
-import React from 'react'
 import "./Home.css"
 import img1 from "./images/Captur1e.JPG"
 import img2 from "./images/Capture2.JPG"
 import img3 from "./images/Capture3.JPG"
 import img4 from "./images/Capture4.JPG"
+import React, { useContext, useEffect, useState } from 'react'
+import { AuthContext } from "../MyContext/AuthContext"
+import { useNavigate, useParams } from 'react-router-dom';
 
 const Home = () => {
+  const [products, setProducts] = useState([]);
+  const [isProductsExist, setIsProductsExist] = useState(false);
+  const { state } = useContext(AuthContext);
+
+  const route = useNavigate();
+
+  useEffect(() => {
+    const getProducts = JSON.parse(localStorage.getItem("Products"));
+
+    if (getProducts) {
+      setIsProductsExist(true);
+      setProducts(getProducts);
+    } else {
+      setIsProductsExist(false);
+    }
+  }, []);
+
+  const addCart = (id) => {
+    const regUser = JSON.parse(localStorage.getItem("Users"));
+
+    if (state?.user) {
+      for (let i = 0; i < regUser.length; i++) {
+        if (regUser[i].email === state.user.email) {
+          const duplicate = regUser[i].cart.find((e) => e.id === id);
+
+          // console.log(duplicate);
+          // Do not add Duplicate items
+          if (regUser[i].cart.length && duplicate) {
+            alert("product already added");
+            route("/cart");
+          } else {
+            regUser[i].cart.push(products);
+            localStorage.setItem("Users", JSON.stringify(regUser));
+            alert("product added");
+            route("/all-products");
+          }
+        }
+      }
+    }
+  }
   return (
     <div>
-      <div id="body">
+      <div id="body-home1">
         <div>
-          <img src={img1} />
+          <img className='banners' src={img1} />
+        </div>
+
+        <div>
+          <img className='banners' src={img2} />
         </div>
         <div>
-          <img src="http://127.0.0.1:5500/homepage/m2.JPG" />
+          <img className='banners' src={img3} />
         </div>
         <div>
-          <img src={img2} />
-        </div>
-        <div>
-          <img src={img3} />
-        </div>
-        <div>
-          <img src={img4} />
+          <img className='banners' src={img4} />
         </div>
       </div>
       <h1>Products For You</h1>
-      <div id="body2" className="flex">
-        <div id="left">
+      <div id="body6" className="flex">
+        <div id="left-home">
           <div className="pxy rel">Sort by:<b>Relevance</b></div>
           <div className="contain">
             <p><b>FILTERS</b></p>
@@ -125,7 +165,8 @@ const Home = () => {
 
           </div>
         </div>
-        <div id="right">
+
+        <div id="right" >
           <div>
             <img src="https://images.meesho.com/images/products/294018871/qjk3i_400.webp" />
             <p>Alisha Vougish women</p>
@@ -137,8 +178,8 @@ const Home = () => {
               </div>
               <p>61095 Reviews</p>
             </div>
-          </div>
-          {/* <div>
+          </div> 
+          <div>
             <img src="https://images.meesho.com/images/products/93499740/0stqg_400.webp" />
             <p>Alisha Vougish women</p>
             <p><b>Rs 421</b>Onwards</p>
@@ -317,8 +358,12 @@ const Home = () => {
               </div>
               <p>61095 Reviews</p>
             </div>
-          </div> */}
+          </div>
         </div>
+
+
+
+    
       </div>
     </div>
   )
