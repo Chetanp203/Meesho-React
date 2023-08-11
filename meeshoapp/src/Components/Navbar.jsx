@@ -52,7 +52,7 @@ const Navbar = () => {
                   <b>Hello-{user?.name}</b></a></li>
                 <li className='flex'><a class="dropdown-item" href="#">
                 <i className="fa-solid fa-phone" style={{color: '#292929',paddingRight:'15px'}}></i>
-                  <span>+919004003518</span></a></li>
+                  <span>{user?.number}</span></a></li>
                 { !state?.user &&
                 <li onClick={()=>router("/login")} className='flex'><a class="dropdown-item" href="#">
                 <i  className="fa-solid fa-right-to-bracket" style={{color: '#2b2b2b',paddingRight:'15px'}}></i>

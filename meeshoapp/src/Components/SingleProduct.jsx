@@ -117,18 +117,9 @@ const SingleProduct = () => {
 
                         {state?.user && state?.user?.role === "Seller" && (
                             <div>
-{/* class="btn btn-primary" */}
+
                                 <button className='add' type="button"  data-bs-toggle="modal" data-bs-target="#exampleModal"
-                                //  style={{
-                                //     width: "70%",
-                                //     height: "50px",
-                                //     backgroundColor: "rgb(255,62,108)",
-                                //     fontSize: "22px",
-                                //     fontWeight: "bolder",
-                                //     color: "white",
-                                //     border: 'none',
-                                //     marginTop: '30px'
-                                // }}
+                             
                                 >
                                     <i className="fa-solid fa-cart-shopping fa-xl" style={{ color: '#9f2089' }}></i>
                                     <h5>Update </h5>
@@ -211,10 +202,7 @@ const SingleProduct = () => {
                             </div>
                         )}
 
-                        {/* <button className="buy">
-                            <i className="fa-solid fa-angles-right fa-xl" style={{ color: '#ffffff' }}></i>
-                            <h5>Buy Now</h5>
-                        </button> */}
+                      
                     </div>
                     <h5 style={{ padding: '20px 15px' }}>7 Similar Products</h5>
                     <div className="preview-below">
@@ -249,14 +237,7 @@ const SingleProduct = () => {
                 <div className="product-details">
                     <h3>Product Category</h3>
                     <p>{singleProduct.category}</p>
-                    {/* <p>Name: Khadi Casual Shirt Combo Pack of 2</p>
-                    <p>Fabric: Khadi Cotton</p>
-                    <p>Sleeve Length: Short Sleeves</p>
-                    <p>Pattern: Solid</p>
-                    <p>Net Quantity (N):2</p>
-                    <p>M,L,XL,XXL(Chest Size:48 in,Length Size:30 in)</p>
-                    <p>Country of Origin: India</p>
-                    <p>More Information</p> */}
+                  
                 </div>
                 <div className="sold-by">
                     <h3>Sold By</h3>

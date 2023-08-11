@@ -5,10 +5,8 @@ import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
     const { state, login ,logout} = useContext(AuthContext);
-    console.log(state,"-state")
-    const [userData, setUserData] = useState({name:"", email:"",password:"", role:"Buyer",cart:[]});
-    const router = useNavigate();
-    console.log(userData,"-userdata");
+    const [userData, setUserData] = useState({name:"", email:"",number:"",password:"", role:"Buyer",cart:[]});
+    const router = useNavigate();  
     const [user, setUser] = useState();
   
     useEffect(()=> {
@@ -31,12 +29,13 @@ const Register = () => {
   
     const handleSubmit = (event) => {
         event.preventDefault();
-        if(userData.name && userData.email && userData.password){
+        if(userData.name && userData.email && userData.password && userData.number && userData.role && userData.cart){
             const array = JSON.parse(localStorage.getItem("Users")) || [];
   
             const userDataObj = {
                 name: userData.name,
                 email: userData.email,
+                number: userData.number,
                 password: userData.password,
                 cart:[],
                 role: userData.role,
@@ -44,7 +43,7 @@ const Register = () => {
             array.push(userDataObj);
             localStorage.setItem("Users", JSON.stringify(array));
             alert("Registration Successfull!!!")
-            setUserData({name:"", email:"",password:""})
+            setUserData({name:"", email:"",password:"",number:"",role:"",cart:""})
             // router('/login')
         } else {
             alert("All fields mandatory")
@@ -64,6 +63,10 @@ const Register = () => {
                     <label>Email:</label>
                     <br />
                     <input type="text" placeholder="Email" onChange={handleChange} name='email'/>
+                    <br />
+                    <label>Phone Number:</label>
+                    <br />
+                    <input type="number" placeholder="Phone-number" onChange={handleChange} name='number'/>
                     <br />
                     <label>Select Role:</label>
                     <br />
