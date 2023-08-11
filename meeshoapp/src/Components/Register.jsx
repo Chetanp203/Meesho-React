@@ -4,18 +4,18 @@ import { AuthContext } from '../MyContext/AuthContext';
 import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
-    const { state, login ,logout} = useContext(AuthContext);
+    // const { state, login ,logout} = useContext(AuthContext);
     const [userData, setUserData] = useState({name:"", email:"",number:"",password:"", role:"Buyer",cart:[]});
     const router = useNavigate();  
-    const [user, setUser] = useState();
+    // const [user, setUser] = useState();
   
-    useEffect(()=> {
-       if(state?.user){
-        setUser(state?.user)
-       }else{
-        setUser({});
-       }
-    },[state])
+    // useEffect(()=> {
+    //    if(state?.user){
+    //     setUser(state?.user)
+    //    }else{
+    //     setUser({});
+    //    }
+    // },[state])
   
     const handleChange= (event) => {
        setUserData({...userData, [event.target.name] : event.target.value})
@@ -55,7 +55,7 @@ const Register = () => {
             <div id="login">
                 <img src="https://images.meesho.com/images/marketing/1661417516766.webp" />
                 <p>Sign Up To view your profile</p>
-                <form id="logindetails" onChange={handleSubmit}>
+                <form id="logindetails" onSubmit={handleSubmit}>
                     <label>Name:</label>
                     <br />
                     <input type="text" placeholder="Name" onChange={handleChange} name='name'/>
