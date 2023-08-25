@@ -1,54 +1,84 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, {  useContext, useEffect, useState } from 'react'
 import "./Register.css"
-import { AuthContext } from '../MyContext/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../MyContext/AuthContext';
+import axios from 'axios';
+import { toast } from 'react-hot-toast';
 
 const Register = () => {
-    // const { state, login ,logout} = useContext(AuthContext);
-    const [userData, setUserData] = useState({name:"", email:"",number:"",password:"", role:"Buyer",cart:[]});
-    const router = useNavigate();  
-    // const [user, setUser] = useState();
+//     const [userData, setUserData] = useState({name:"", email:"",number:"",password:"", role:"Buyer",cart:[]});
+//     const router = useNavigate();  
+    
   
-    // useEffect(()=> {
-    //    if(state?.user){
-    //     setUser(state?.user)
-    //    }else{
-    //     setUser({});
-    //    }
-    // },[state])
+//     const handleChange= (event) => {
+//        setUserData({...userData, [event.target.name] : event.target.value})
+//     }
+//     const handleSelectChange= (event) => {
+//       const value = event.target.value
+//       setUserData({...userData,["role"]:value})
+//    }
+//     const handleSubmit = (event) => {
+//         event.preventDefault();
+//         if(userData.name && userData.email && userData.password && userData.number && userData.role && userData.cart){
+//             const array = JSON.parse(localStorage.getItem("Users")) || [];
   
-    const handleChange= (event) => {
-       setUserData({...userData, [event.target.name] : event.target.value})
+//             const userDataObj = {
+//                 name: userData.name,
+//                 email: userData.email,
+//                 number: userData.number,
+//                 password: userData.password,
+//                 cart:[],
+//                 role: userData.role,
+//             };
+//             array.push(userDataObj);
+//             localStorage.setItem("Users", JSON.stringify(array));
+//             alert("Registration Successfull!!!")
+//             setUserData({name:"", email:"",password:"",number:"",role:"",cart:""})
+            
+//         } else {
+//             alert("All fields mandatory")
+//         }
+//     }
+
+const [userData,setUserData]= useState({name:"", email:"", password:"",confirmPassword:"",role:"Buyer"})
+    const {state,dispatch} = useContext(AuthContext);
+    const router = useNavigate();
+
+    const handleChange = (event)=>{
+        setUserData({...userData,[event.target.name]:event.target.value})
     }
-    const handleSelectChange= (event) => {
-      const value = event.target.value
-      setUserData({...userData,["role"]:value})
-   }
-  
-  //  role: event.target.value
-  
-    const handleSubmit = (event) => {
+
+    const handleSelectChange =(event)=>{
+        setUserData({...userData,"role": event.target.value})
+    }
+
+    // console.log(userData,"-userdata")
+
+    const handleSubmit =async (event)=>{
         event.preventDefault();
-        if(userData.name && userData.email && userData.password && userData.number && userData.role && userData.cart){
-            const array = JSON.parse(localStorage.getItem("Users")) || [];
-  
-            const userDataObj = {
-                name: userData.name,
-                email: userData.email,
-                number: userData.number,
-                password: userData.password,
-                cart:[],
-                role: userData.role,
-            };
-            array.push(userDataObj);
-            localStorage.setItem("Users", JSON.stringify(array));
-            alert("Registration Successfull!!!")
-            setUserData({name:"", email:"",password:"",number:"",role:"",cart:""})
-            // router('/login')
-        } else {
-            alert("All fields mandatory")
+        if(userData.name && userData.email && userData.password && userData.confirmPassword && userData.role){
+           if (userData.password === userData.confirmPassword){
+              const response = await axios.post("http://localhost:8001/register",{userData});
+              if(response.data.success){
+                router("/login")
+                toast.success(response.data.message)
+              }else{
+                toast.error(response.data.message)
+              }
+           }else{
+            toast.error("Passwords didn't match..")
+           }
+        }else{
+            toast.error("All fields are mandatory")
         }
     }
+
+    useEffect(()=>{
+      if(state?.user?.name){
+        router("/")
+      }
+      },[state])
+
 
     return (
         <div id="body1">
@@ -58,15 +88,11 @@ const Register = () => {
                 <form id="logindetails" onSubmit={handleSubmit}>
                     <label>Name:</label>
                     <br />
-                    <input type="text" placeholder="Name" onChange={handleChange} name='name'/>
+                    <input type="text" placeholder="Name" onChange={handleChange} name='name' value={userData.name}/>
                     <br />
                     <label>Email:</label>
                     <br />
-                    <input type="text" placeholder="Email" onChange={handleChange} name='email'/>
-                    <br />
-                    <label>Phone Number:</label>
-                    <br />
-                    <input type="number" placeholder="Phone-number" onChange={handleChange} name='number'/>
+                    <input type="text" placeholder="Email" onChange={handleChange} name='email' value={userData.email}/>
                     <br />
                     <label>Select Role:</label>
                     <br />
@@ -77,7 +103,11 @@ const Register = () => {
                     <br />
                     <label>Password:</label>
                     <br />
-                    <input type="password" placeholder="Password" onChange={handleChange} name='password'/>
+                    <input type="password" placeholder="Password" onChange={handleChange} name='password' value={userData.password}/>
+                    <br />
+                    <label>Confirm Password:</label>
+                    <br />
+                    <input type="password" placeholder='ConfirmPassword' name='confirmPassword' onChange={handleChange} value={userData.confirmPassword}/>
                     <br />
                     <span>Already have an account?<span onClick={()=> router("/login")}><b>Login here!!</b></span></span>
                     <button className='register'>Continue</button>

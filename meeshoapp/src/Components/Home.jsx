@@ -197,7 +197,7 @@ const Home = () => {
             <p><b>Rs 421</b>Onwards</p>
             <p>Free Delivery</p>
             <div className="flex">
-              <div class="star">
+              <div className="star">
                 3.8<i className="fa-solid fa-star" style={{ color: '#fafafa' }}></i>
               </div>
               <p>61095 Reviews</p>
@@ -209,7 +209,7 @@ const Home = () => {
             <p><b>Rs 421</b>Onwards</p>
             <p>Free Delivery</p>
             <div className="flex">
-              <div class="star">
+              <div className="star">
                 3.8<i className="fa-solid fa-star" style={{ color: '#fafafa' }}></i>
               </div>
               <p>61095 Reviews</p>
@@ -221,7 +221,7 @@ const Home = () => {
             <p><b>Rs 421</b>Onwards</p>
             <p>Free Delivery</p>
             <div className="flex">
-              <div class="star">
+              <div className="star">
                 3.8<i className="fa-solid fa-star" style={{ color: '#fafafa' }}></i>
               </div>
               <p>61095 Reviews</p>
@@ -233,7 +233,7 @@ const Home = () => {
             <p><b>Rs 421</b>Onwards</p>
             <p>Free Delivery</p>
             <div className="flex">
-              <div class="star">
+              <div className="star">
                 3.8<i className="fa-solid fa-star" style={{ color: '#fafafa' }}></i>
               </div>
               <p>61095 Reviews</p>
@@ -245,7 +245,7 @@ const Home = () => {
             <p><b>Rs 421</b>Onwards</p>
             <p>Free Delivery</p>
             <div className="flex">
-              <div class="star">
+              <div className="star">
                 3.8<i className="fa-solid fa-star" style={{ color: '#fafafa' }}></i>
               </div>
               <p>61095 Reviews</p>
@@ -257,7 +257,7 @@ const Home = () => {
             <p><b>Rs 421</b>Onwards</p>
             <p>Free Delivery</p>
             <div className="flex">
-              <div class="star">
+              <div className="star">
                 3.8<i className="fa-solid fa-star" style={{ color: '#fafafa' }}></i>
               </div>
               <p>61095 Reviews</p>
@@ -269,7 +269,7 @@ const Home = () => {
             <p><b>Rs 421</b>Onwards</p>
             <p>Free Delivery</p>
             <div className="flex">
-              <div class="star">
+              <div className="star">
                 3.8<i className="fa-solid fa-star" style={{ color: '#fafafa' }}></i>
               </div>
               <p>61095 Reviews</p>
@@ -281,7 +281,7 @@ const Home = () => {
             <p><b>Rs 421</b>Onwards</p>
             <p>Free Delivery</p>
             <div className="flex">
-              <div class="star">
+              <div className="star">
                 3.8<i className="fa-solid fa-star" style={{ color: '#fafafa' }}></i>
               </div>
               <p>61095 Reviews</p>
@@ -293,7 +293,7 @@ const Home = () => {
             <p><b>Rs 421</b>Onwards</p>
             <p>Free Delivery</p>
             <div className="flex">
-              <div class="star">
+              <div className="star">
                 3.8<i className="fa-solid fa-star" style={{ color: '#fafafa' }}></i>
               </div>
               <p>61095 Reviews</p>
@@ -305,7 +305,7 @@ const Home = () => {
             <p><b>Rs 421</b>Onwards</p>
             <p>Free Delivery</p>
             <div className="flex">
-              <div class="star">
+              <div className="star">
                 3.8<i className="fa-solid fa-star" style={{ color: '#fafafa' }}></i>
               </div>
               <p>61095 Reviews</p>
@@ -317,7 +317,7 @@ const Home = () => {
             <p><b>Rs 421</b>Onwards</p>
             <p>Free Delivery</p>
             <div className="flex">
-              <div class="star">
+              <div className="star">
                 3.8<i className="fa-solid fa-star" style={{ color: '#fafafa' }}></i>
               </div>
               <p>61095 Reviews</p>
@@ -329,7 +329,7 @@ const Home = () => {
             <p><b>Rs 421</b>Onwards</p>
             <p>Free Delivery</p>
             <div className="flex">
-              <div class="star">
+              <div className="star">
                 3.8<i className="fa-solid fa-star" style={{ color: '#fafafa' }}></i>
               </div>
               <p>61095 Reviews</p>
@@ -341,7 +341,7 @@ const Home = () => {
             <p><b>Rs 421</b>Onwards</p>
             <p>Free Delivery</p>
             <div className="flex">
-              <div class="star">
+              <div className="star">
                 3.8<i className="fa-solid fa-star" style={{ color: '#fafafa' }}></i>
               </div>
               <p>61095 Reviews</p>
@@ -353,7 +353,7 @@ const Home = () => {
             <p><b>Rs 421</b>Onwards</p>
             <p>Free Delivery</p>
             <div className="flex">
-              <div class="star">
+              <div className="star">
                 3.8<i className="fa-solid fa-star" style={{ color: '#fafafa' }}></i>
               </div>
               <p>61095 Reviews</p>

@@ -5,8 +5,8 @@ import { AuthContext } from '../MyContext/AuthContext';
 
 const Navbar = () => {
   const router = useNavigate();
-  const { state, login ,logout} = useContext(AuthContext);
-  console.log(state,"-state")
+  const { state,login,logout} = useContext(AuthContext);
+  // console.log(state,"-state")
   const [userData, setUserData] = useState({name:"", email:"",password:"", role:"Buyer",cart:[]});
   const [user, setUser] = useState({});
 
@@ -17,6 +17,8 @@ const Navbar = () => {
       setUser({});
      }
   },[state])
+
+  
 
   return (
     <div>
@@ -36,7 +38,7 @@ const Navbar = () => {
           <div style={{ paddingTop: '18px', paddingLeft: '10px' }}>
             <span >Become a Supplier</span>
           </div>
-          <div class="flex">
+          <div className="flex">
             <div class="dropdown-center">
               <i className="fa-regular  fa-user" style={{ color: '#7d7d7d' }} ></i>
               <p className='dropdown-toggle'data-bs-toggle="dropdown" aria-expanded="false">Profile</p>
@@ -46,32 +48,32 @@ const Navbar = () => {
               {/* <button class=" dropdown-toggle"  data-bs-toggle="dropdown" aria-expanded="false">
                 Centered dropdown
               </button> */}
-              <ul class="dropdown-menu" style={{width:'300px'}}>
-                <li onClick={()=> router("/profile")} className='flex'><a class="dropdown-item" href="#">
+              <ul className="dropdown-menu" style={{width:'300px'}}>
+                <li onClick={()=> router("/profile")} className='flex'><a className="dropdown-item" href="#">
                 <i className="fa-solid fa-user" style={{color: '#2e2e2e',paddingRight:'15px'}}></i>
-                  <b>Hello-{user?.name}</b></a></li>
-                <li className='flex'><a class="dropdown-item" href="#">
+                  <b>Hello-{state?.user?.name}</b></a></li>
+                <li className='flex'><a className="dropdown-item" href="#">
                 <i className="fa-solid fa-phone" style={{color: '#292929',paddingRight:'15px'}}></i>
                   <span>{user?.number}</span></a></li>
                 { !state?.user &&
-                <li onClick={()=>router("/login")} className='flex'><a class="dropdown-item" href="#">
+                <li onClick={()=>router("/login")} className='flex'><a className="dropdown-item" href="#">
                 <i  className="fa-solid fa-right-to-bracket" style={{color: '#2b2b2b',paddingRight:'15px'}}></i>
                   <b>Login</b></a></li>}
 
 
                 <hr />
                 {state?.user?.role == "Seller" &&
-                <li onClick={()=> router("/add-products")}  className='flex'><a class="dropdown-item" href="#">
+                <li onClick={()=> router("/add-products")}  className='flex'><a className="dropdown-item" href="#">
                 <i className="fa-solid fa-plus" style={{color: '#303030',paddingRight:'15px'}}></i>
                   <b>Add Products</b></a></li>}
 
 
-                <li className='flex'><a class="dropdown-item" href="#">
+                <li className='flex'><a className="dropdown-item" href="#">
                 <i className="fa-solid fa-bag-shopping" style={{color: '#363636',paddingRight:'15px'}}></i>
                   <b>My Orders</b></a></li>              
                 <hr />
                 {state?.user &&
-                <li onClick={logout} className='flex'><a class="dropdown-item" href="#">
+                <li onClick={logout} className='flex'><a className="dropdown-item" href="#">
                 <i className="fa-solid fa-arrow-right-from-bracket" style={{color: '#292929',paddingRight:'15px'}}></i>
                   <b>Logout</b></a></li>}
               </ul>
