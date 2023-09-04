@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../MyContext/AuthContext';
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
+import api from './ApiConfig'
 
 const Register = () => {
 //     const [userData, setUserData] = useState({name:"", email:"",number:"",password:"", role:"Buyer",cart:[]});
@@ -40,7 +41,7 @@ const Register = () => {
 //         }
 //     }
 
-const [userData,setUserData]= useState({name:"", email:"", password:"",confirmPassword:"",role:"Buyer"})
+const [userData,setUserData]= useState({name:"", email:"", password:"",confirmPassword:"",role:"Buyer",number:""})
     const {state,dispatch} = useContext(AuthContext);
     const router = useNavigate();
 
@@ -56,10 +57,11 @@ const [userData,setUserData]= useState({name:"", email:"", password:"",confirmPa
 
     const handleSubmit =async (event)=>{
         event.preventDefault();
-        if(userData.name && userData.email && userData.password && userData.confirmPassword && userData.role){
+        if(userData.name && userData.email && userData.password && userData.confirmPassword && userData.role && userData.number){
            if (userData.password === userData.confirmPassword){
-              const response = await axios.post("http://localhost:8001/register",{userData});
+              const response = await api.post("/all/register",{userData});
               if(response.data.success){
+                setUserData({name:"", email:"", password:"",confirmPassword:"",role:"Buyer",number:""})
                 router("/login")
                 toast.success(response.data.message)
               }else{
@@ -94,6 +96,8 @@ const [userData,setUserData]= useState({name:"", email:"", password:"",confirmPa
                     <br />
                     <input type="text" placeholder="Email" onChange={handleChange} name='email' value={userData.email}/>
                     <br />
+                    <label>Contact Number:</label><br />
+            <input type="number" placeholder='Contact Number' name='number' onChange={handleChange} value={userData.number} /><br />
                     <label>Select Role:</label>
                     <br />
                     <select onChange={handleSelectChange} style={{ width: '64%', height: '30px', border: '1px solid grey', marginTop: '5px', borderRadius: '2px' }}>

@@ -63,7 +63,7 @@ const Login = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (userData.email && userData.password) {
-      const response = await axios.post("http://localhost:8001/login", {
+      const response = await axios.post("/all/login", {
         userData,
       });
       if (response.data.success) {

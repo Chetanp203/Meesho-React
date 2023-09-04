@@ -1,6 +1,6 @@
 import { createContext ,useReducer} from "react";
 import { useEffect } from "react";
-import axios from "axios";
+import api from "../Components/ApiConfig";
 
 export const AuthContext = createContext();
 
@@ -23,7 +23,7 @@ const AuthenticationProvider = ({children}) => {
     // useEffect(()=>{
     //   async  function getCurrentUserData(){
     //       let token = JSON.parse(localStorage.getItem("token"));
-    //       const response = await axios.post("http://localhost:8001/get-current-user",{token});
+    //       const response = await api.post("/all/get-current-user",{token});
     //       if(response.data.success){
     //         dispatch({
     //             type: "login",
@@ -37,6 +37,28 @@ const AuthenticationProvider = ({children}) => {
     //     }
     //     getCurrentUserData();
     // },[])
+
+
+    useEffect(()=>{
+        async  function getCurrentUserData(){
+            let token = JSON.parse(localStorage.getItem("token"));
+            if(token){
+              try{
+                const response = await api.post("/all/get-current-user",{token});
+              if(response.data.success){
+                dispatch({
+                    type: "Login",
+                    payload: response.data.user
+                })
+              }
+              }catch(error){
+                console.log(error);
+              }
+            }
+            
+          }
+          getCurrentUserData();
+      },[])
 
 
    return (
