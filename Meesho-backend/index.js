@@ -27,7 +27,7 @@ app.use('/api/v1',routeIndex)
 //     console.log("Error while connecting to MongDB",error)
 // })
 
-mongoose.connect("mongodb+srv://chetan203:chetan203@cluster0.qocfrn6.mongodb.net/meesho-backend").then(()=>{
+mongoose.connect(process.env.MONGO_URL).then(()=>{
     console.log("Connected to MongoDB")
      }).catch((error)=>{
          console.log("Error while connecting to MongDB",error)

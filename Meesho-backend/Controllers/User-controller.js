@@ -9,6 +9,7 @@ export const register= async (req,res) =>{
     try{
         const {userData}=req.body
         const {name, email, password,role,number}= userData;
+        console.log(userData);
         if (!name || !email || !password || !role || !number) return res.status(404).json({success:false ,message:"All fields are mandatory.."})
 
         const ifEmailExist = await Usermodel.find({email})
@@ -33,13 +34,14 @@ export const register= async (req,res) =>{
 
 export const login = async(req,res)=>{
     try{
-        const {userData}=req.body
+         const {userData}=req.body
         const{email, password}= userData;
+        
         if (!email || !password) return res.json({success:false ,message:"All fields are mandatory.."})
-
+        
         const user = await Usermodel.findOne({email})
         if (!user) return res.json({success:false ,message:"User not found"})
-
+        
         const isPasswordCorrect = await bcrypt.compare(password, user.password);
         if (isPasswordCorrect){
             const userCreds = {
@@ -56,7 +58,7 @@ export const login = async(req,res)=>{
         return res.json({success:false ,message:"Password is incorrect"})
 
     }catch(error){
-        return res.json({success:false ,message:error})
+        return res.status(500).json({success:false ,message:error})
     }
 }
 
